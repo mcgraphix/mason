@@ -1,0 +1,11 @@
+div.mason-container {
+    position:relative;
+    box-sizing: border-box;
+
+}
+
+div.mason-container > div.mason-brick {
+    position:absolute;
+    display:flex;
+    align-items: stretch;
+}

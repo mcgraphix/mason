@@ -1,0 +1,10 @@
+.mason-container {
+  position:relative;
+  box-sizing: border-box;
+
+  > .mason-brick {
+    position:absolute;
+    display:flex;
+    align-items: stretch;
+  }
+}

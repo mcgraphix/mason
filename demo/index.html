@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mason Demo</title>
+    <link href="/source/mason.css" rel="stylesheet" type="text/css"/>
+
+
+    <style>
+        body {
+            background-color: #dddddd;
+        }
+        /* custom styles for visual*/
+        .mason-brick {
+            font-family: sans-serif;
+            transition: left 0.2s ease-out, top 0.2s ease-out;
+        }
+
+        .mason-brick > div {
+            margin: 10px;
+            padding: 0 10px 20px 10px;
+            background-color: #ffffff;
+            box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+        }
+
+        .mason-brick > div > span {
+              font-size: 25px;
+              display:inline-block;
+              padding: 10px;
+              background-color: #555555;
+              color: #ffffff;
+              margin: 0 5px 5px -10px;
+
+        }
+
+        /*
+        This could bootstrap or some other grid framework
+        */
+
+        .col4 {
+            width: 33.33333%;
+        }
+
+        .col2 {
+            width: 16.6666666%
+        }
+        .col3 {
+            width: 25%;
+        }
+
+        .col6 {
+            width: 50%;
+        }
+
+        .col8 {
+            width: 66.6666666%;
+        }
+
+        .col9 {
+            width: 75%;
+        }
+
+        @media (max-width: 800px) and (min-width: 600px)  {
+            .col1, .col2, .col3, .col4, .col5, .col6 {
+                width: 50%;
+            }
+
+            .col7, .col8, .col9, .col10, .col11, .col12 {
+                width: 100%;
+            }
+
+        }
+
+        @media(max-width: 599px) {
+            .col1, .col2, .col3, .col4, .col5, .col6,
+            .col7, .col8, .col9, .col10, .col11, .col12 {
+                width: 100%;
+            }
+        }
+
+        .row1 {
+            min-height: 100px;
+        }
+
+        .row2 {
+            min-height: 200px;
+        }
+
+        .row3 {
+            min-height: 300px;
+        }
+
+        .row4 {
+            min-height: 400px;
+        }
+
+        .row5 {
+            min-height: 500px;
+        }
+    </style>
+</head>
+<body>
+<div class="mason-container">
+    <div class="mason-brick col4 row1">
+        <div><span>1</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in accumsan elit.</div>
+    </div>
+    <div class="mason-brick col4 row1">
+        <div><span>2</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in accumsan elit.Lorem
+            ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in accumsan elit.Lorem ipsum dolor sit amet,
+            consectetur adipiscing elit. Vestibulum in accumsan elit.
+        </div>
+    </div>
+    <div class="mason-brick col4 row4">
+        <div><span>3</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in accumsan elit.Lorem
+            ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in accumsan elit.Lorem ipsum dolor sit amet,
+            consectetur adipiscing elit. Vestibulum in accumsan elit.Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit. Vestibulum in accumsan elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in
+            accumsan elit.
+        </div>
+    </div>
+    <div class="mason-brick col4 row2">
+        <div><span>4</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in accumsan elit.Lorem
+            ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in accumsan elit.
+        </div>
+    </div>
+    <div class="mason-brick col4 row2">
+        <div><span>5</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in accumsan elit.Lorem
+            ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in accumsan elit.Lorem ipsum dolor sit amet,
+            consectetur adipiscing elit. Vestibulum in accumsan elit.Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit. Vestibulum in accumsan elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in
+            accumsan elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in accumsan elit.
+        </div>
+    </div>
+    <div class="mason-brick col4 row4">
+        <div><span>6</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in accumsan elit.</div>
+    </div>
+    <div class="mason-brick col4 row2">
+        <div><span>7</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in accumsan elit.Lorem
+            ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in accumsan elit.
+        </div>
+    </div>
+    <div class="mason-brick col4 row2">
+        <div><span>8</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in accumsan elit.Lorem
+            ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in accumsan elit.
+        </div>
+    </div>
+</div>
+<script data-main="main" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.2/require.js"></script>
+</body>
+</html>

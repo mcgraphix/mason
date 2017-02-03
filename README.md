@@ -79,3 +79,6 @@ CSS sizing could use Bootstrap, Foundation, etc. but here we will do it manually
     width: 25%;
 }
 ````
+
+## Demo
+Check out [the working demo](http://mcgraphix.github.io/mason/demo/index.html)

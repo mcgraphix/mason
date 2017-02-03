@@ -81,4 +81,4 @@ CSS sizing could use Bootstrap, Foundation, etc. but here we will do it manually
 ````
 
 ## Demo
-Check out [the working demo](http://mcgraphix.github.io/mason/demo)
+Check out [the working demo](http://mcgraphix.github.io/mason/demo/index.html)

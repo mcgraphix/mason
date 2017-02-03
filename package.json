@@ -1,13 +1,14 @@
 {
   "name": "mason-js",
-  "version": "1.0.0",
+  "version": "0.0.2",
   "description": "A simple horizontal masonry layout that works with dynamically sized items",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "./node_modules/typescript/bin/tsc && cp ./package.json ./lib && cp ./source/mason.scss ./lib",
-    "build-amd" : "./node_modules/typescript/bin/tsc source/mason.ts --outFile ./lib-common/mason.js -m amd"
-
+    "build-amd": "./node_modules/typescript/bin/tsc --rootDir ./source --outDir ./lib-common -m amd",
+    "build-es5": "./node_modules/typescript/bin/tsc --rootDir ./source --outDir ./lib-es2015 -m es2015 &&  babel ./lib-es2015 -d ./lib-es5",
+    "demo":"webpack --config webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,10 @@
   },
   "homepage": "https://github.com/mcgraphix/mason#readme",
   "devDependencies": {
-    "typescript": "^2.1.5"
+    "typescript": "^2.1.5",
+    "webpack": "^2.2.1"
+  },
+  "dependencies": {
+    "css-element-queries": "^0.4.0"
   }
 }

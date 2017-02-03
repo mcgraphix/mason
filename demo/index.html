@@ -13,7 +13,7 @@
         /* custom styles for visual*/
         .mason-brick {
             font-family: sans-serif;
-            transition: left 0.2s ease-out, top 0.2s ease-out;
+            transition: left 0.2s ease-out, top 0.2s ease-out, height 0.2s ease-out;
         }
 
         .mason-brick > div {
@@ -101,13 +101,16 @@
 </head>
 <body>
 <div class="mason-container">
-    <div class="mason-brick col4 row1">
-        <div><span>1</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in accumsan elit.</div>
+    <div class="mason-brick col4 row1" id="expandableExample">
+        <div><span>1</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in accumsan elit.<br />
+            <button>Show more</button>
+        </div>
     </div>
     <div class="mason-brick col4 row1">
         <div><span>2</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in accumsan elit.Lorem
             ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in accumsan elit.Lorem ipsum dolor sit amet,
             consectetur adipiscing elit. Vestibulum in accumsan elit.
+
         </div>
     </div>
     <div class="mason-brick col4 row4">
@@ -116,6 +119,7 @@
             consectetur adipiscing elit. Vestibulum in accumsan elit.Lorem ipsum dolor sit amet, consectetur adipiscing
             elit. Vestibulum in accumsan elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in
             accumsan elit.
+
         </div>
     </div>
     <div class="mason-brick col4 row2">
@@ -145,6 +149,6 @@
         </div>
     </div>
 </div>
-<script data-main="main" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.2/require.js"></script>
+<script src="bundle.js"></script>
 </body>
 </html>

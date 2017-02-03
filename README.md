@@ -3,7 +3,7 @@
 A simple horizontal masonry layout that works with dynamically sized items
 
 ## To use
-This module works by looking at all "bricks" within a container and then positioning them within the container doings its best to following rule:
+This module works by looking at all "bricks" within a container and then positioning them within the container doing its best to following rule:
 
 - Each brick should be placed as close to the top as possible
 

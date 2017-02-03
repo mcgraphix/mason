@@ -10,7 +10,9 @@ function pack() {
         var dashboard = document.querySelector('.mason-container');
         var containerWidth = dashboard.offsetWidth;
         // find all the bricks in it
-        var items = dashboard.querySelectorAll('div.mason-brick');
+        // not all browsers are able to treat the results from querySelectorAll with array methods like forEach()
+        // so this will make then an array
+        var items = [].slice.call(dashboard.querySelectorAll('div.mason-brick'));
 
         // create a Mason and use it to fit the bricks into a container
         // the size of the 'dashboard'

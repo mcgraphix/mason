@@ -31,8 +31,24 @@ function pack() {
         // since we are dealing with dom nodes, we need the MasonDomRenderer
         // which uses CSS absolute positioning
         var renderer = new MasonDomRenderer();
-        new Mason(renderer, containerWidth).layout(items);
-
+        
+        // configure the options
+        var opts = { // MasonOptions object here
+                containerWidth: containerWidth,
+                renderer: renderer,
+                // this threshold signifies that even if a column to the right
+                // would postion the tile closer to the top, it will prefer
+                // a column to the left if the difference is less than this
+                // many pixels
+                threshold: 40, 
+                columns: 12
+            };
+        // After calculating the positions of all the bricks, it will return the new
+        // required height of the container which you must use to set the height
+        // if you want content surrounding the container to flow around it
+         
+        var containerHeight = new Mason(renderer, containerWidth).layout(items);
+        container.style.minHeight = containerHeight + 'px';
 }
 
 // call it to layout the bricks

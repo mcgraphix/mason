@@ -37,12 +37,19 @@ export interface MasonRenderer {
      */
     setPosition(brick: any, xCoordInColumns: number, yCoordInUnits: number): void;
 }
+export declare class MasonOptions {
+    renderer: MasonRenderer;
+    containerWidth: number;
+    columns: number;
+    threshold: number;
+}
 export declare class Mason {
     containerWidth: number;
     columnBottoms: number[];
     columns: number;
     renderer: MasonRenderer;
-    constructor(renderer: MasonRenderer, containerWidth: number, columns?: number);
+    threshold: number;
+    constructor(opts: MasonOptions);
     private findBestColumn(requiredColumns, element);
     /**
      * Takes a list of elements and returns the new coords for each one. This does not reposition anything.
@@ -51,13 +58,17 @@ export declare class Mason {
      * See layout() if you want everything position automatically.
      *
      * @param elements
-     * @returns {MasonCoord[]}
+     * @returns {coords: MasonCoord[], totalHeight: number}
      */
-    fit(elements: any[]): MasonCoord[];
+    fit(elements: any[]): {
+        coords: MasonCoord[];
+        totalHeight: number;
+    };
     /**
      * This will take the list of elements, find their new locations and then use the MasonRenderer
      * to reposition all the bricks into their new home.
      * @param elements
+     * @returns the height that the container must now be to hold the items.
      */
-    layout(elements: any[]): void;
+    layout(elements: any[]): number;
 }

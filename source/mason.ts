@@ -43,22 +43,48 @@ export interface MasonRenderer {
     setPosition(brick: any, xCoordInColumns: number, yCoordInUnits: number):void;
 }
 
+export class MasonOptions {
+    renderer: MasonRenderer;
+    containerWidth: number;
+    columns: number = 12;
+    threshold: number = 0;
+}
+
 export class Mason {
     containerWidth: number;
     columnBottoms: number[];
     columns = 12;
     renderer: MasonRenderer;
 
-    constructor(renderer:MasonRenderer, containerWidth: number, columns:number = 12) {
-        this.containerWidth = containerWidth;
+    // This is the wiggle room Mason has when choosing a column for a brick
+    // When starting on the left, Mason will only consider a column choose as a better fit
+    // if it is better by this amount or more. This prevents bricks from being placed to the
+    threshold = 40;
+
+    constructor(opts: MasonOptions);
+    constructor(rendererOrOptions:MasonRenderer | MasonOptions, containerWidth?: number,
+                columns:number = 12, threshold: number = 0) {
         this.columnBottoms = [];
-        while(this.columnBottoms.length < 12) {
+
+        if (rendererOrOptions['renderer']) {
+            let opts = (<MasonOptions>rendererOrOptions);
+            this.renderer = opts.renderer;
+            this.containerWidth = opts.containerWidth;
+            this.columns = opts.columns;
+            this.threshold = opts.threshold;
+        } else {
+            this.renderer = (<MasonRenderer>rendererOrOptions);
+            this.containerWidth = containerWidth;
+            this.columns = columns;
+            this.threshold = threshold;
+        }
+
+
+        while(this.columnBottoms.length < this.columns) {
             this.columnBottoms.push(0);
         }
-        renderer.setColumns(columns);
-        this.renderer = renderer;
-        this.columns = columns;
 
+        this.renderer.setColumns(columns);
     }
 
 
@@ -89,12 +115,13 @@ export class Mason {
 
 
         // now the we have the y coord that it would need to be at for each starting column
-        // we just need to figure out which one is lowest and we're done
+        // we just need to figure out which one is lowest (while taking into account the threshold)
+        // and we're done
         let bestFit = result.reduce((best, curr, idx) => {
             if (!best) {
                 return {xColumns: idx, yUnits: curr};
             } else {
-                if (curr < best.yUnits && curr !== -1) {
+                if (curr < (best.yUnits - this.threshold) && curr !== -1) {
                     return {xColumns: idx, yUnits: curr};
                 } else {
                     return best;
@@ -113,11 +140,12 @@ export class Mason {
      * See layout() if you want everything position automatically.
      *
      * @param elements
-     * @returns {MasonCoord[]}
+     * @returns {coords: MasonCoord[], totalHeight: number}
      */
-    fit(elements: any[]): MasonCoord[] {
+    fit(elements: any[]): {coords:MasonCoord[], totalHeight:number} {
 
-       let coordsList:MasonCoord[] = [];
+        let coordsList:MasonCoord[] = [];
+        let totalHeight = 0;
 
         elements.forEach((element, idx) => {
             let elementWidth = this.renderer.getElementWidth(element);
@@ -144,23 +172,32 @@ export class Mason {
 
             // this is a tuple where x is the column index and yPos is the pixel coord to position at.
             coordsList.push(bestFit);
+
+            // update the total height
+            totalHeight = Math.max(totalHeight, elementHeight + bestFit.yUnits);
         });
 
         // return the list of coordinates for each tile
-        return coordsList;
+        return {coords: coordsList, totalHeight: totalHeight};
     }
 
     /**
      * This will take the list of elements, find their new locations and then use the MasonRenderer
      * to reposition all the bricks into their new home.
      * @param elements
+     * @returns the height that the container must now be to hold the items.
      */
-    layout(elements: any[]) {
-        this.fit(elements).forEach((coord: MasonCoord) => {
+    layout(elements: any[]): number {
+
+        let layoutResult = this.fit(elements);
+        layoutResult.coords.forEach((coord: MasonCoord) => {
             // apply the calculated position for each brick however you want. In this case
             // we are just setting the CSS position. Animation will be provided via CSS
             this.renderer.setPosition(coord.element, coord.xColumns, coord.yUnits);
+
         });
+
+        return layoutResult.totalHeight;
     }
 
 };

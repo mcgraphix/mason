@@ -18,7 +18,22 @@ function pack() {
         // the size of the 'dashboard'
         // since we are dealing with dom nodes, we need the MasonDomRenderer
         var renderer = new MasonDomRenderer();
-        new Mason(renderer, containerWidth).layout(items);
+
+        var opts = { // MasonOptions object here
+            containerWidth: containerWidth,
+            renderer: renderer,
+            // this threshold signifies that even if a column to the right
+            // would postion the tile closer to the top, it will prefer
+            // a column to the left if the difference is less than this
+            // many pixels. Make this 0 and check the demo and you will
+            // see the difference in position of bricks 5 and 6 after the
+            // show more button is clicked in brick 1
+            threshold: 40,
+            columns: 12
+        };
+
+        var containerHeight = new Mason(opts).layout(items);
+        dashboard.style.minHeight = containerHeight + 'px';
 
 }
 

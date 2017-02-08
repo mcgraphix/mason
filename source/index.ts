@@ -1,4 +1,4 @@
-import {Mason} from './mason';
+import {Mason, MasonCoord, MasonOptions} from './mason';
 import {MasonDomRenderer} from './mason-dom-renderer';
-export {Mason} from './mason'
+export {Mason, MasonCoord, MasonOptions} from './mason'
 export {MasonDomRenderer} from './mason-dom-renderer';

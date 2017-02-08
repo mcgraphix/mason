@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "./node_modules/typescript/bin/tsc && cp ./package.json ./lib && cp ./source/mason.scss ./lib",
+    "build": "./node_modules/typescript/bin/tsc && cp ./package.json ./lib && cp ./source/mason.scss ./lib && cp ./README.md ./lib",
     "build-amd": "./node_modules/typescript/bin/tsc --rootDir ./source --outDir ./lib-common -m amd",
     "build-es5": "./node_modules/typescript/bin/tsc --rootDir ./source --outDir ./lib-es2015 -m es2015 &&  babel ./lib-es2015 -d ./lib-es5",
     "demo":"webpack --config webpack.config.js"
@@ -24,7 +24,7 @@
     "typescript": "^2.1.5",
     "webpack": "^2.2.1"
   },
-  "dependencies": {
+  "optionalDependencies": {
     "css-element-queries": "^0.4.0"
   }
 }

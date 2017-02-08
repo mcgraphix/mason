@@ -45,6 +45,7 @@ function start() {
     // if the bricks sizes can only change when the window is resized, you could use the
     // window resize event. However, if the bricks can resize themselves, you would want to do something
     // like this
+    // ResizeSensor is from css-element-queries (which is listed as an optional dependency);
     new ResizeSensor(document.querySelector('.mason-container').querySelectorAll('div.mason-brick'), function() {
         pack();
     });

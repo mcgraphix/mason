@@ -30,6 +30,9 @@ function pack() {
             // show more button is clicked in brick 1
             threshold: 40,
             columns: 12
+            // implement your own packing logic
+            // form example, import MasonSimplePacker and try that
+            // packer: new MasonSimplePacker()
         };
 
         var containerHeight = new Mason(opts).layout(items);

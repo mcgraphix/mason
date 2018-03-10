@@ -37,20 +37,25 @@ export interface MasonRenderer {
      */
     setPosition(brick: any, xCoordInColumns: number, yCoordInUnits: number): void;
 }
+export interface MasonPacker {
+    findBestColumn: (requiredColumns: number, element: any, elementIndex: number, columnBottoms: number[], threshold: number) => MasonCoord;
+}
 export declare class MasonOptions {
     renderer: MasonRenderer;
     containerWidth: number;
     columns: number;
     threshold: number;
+    packer: MasonPacker;
 }
 export declare class Mason {
     containerWidth: number;
     columnBottoms: number[];
     columns: number;
     renderer: MasonRenderer;
+    packer?: MasonPacker;
     threshold: number;
     constructor(opts: MasonOptions);
-    private findBestColumn(requiredColumns, element);
+    private findBestColumn(requiredColumns, element, elementIndex);
     /**
      * Takes a list of elements and returns the new coords for each one. This does not reposition anything.
      * You might use this if you want to handle how and when things get repositioned.

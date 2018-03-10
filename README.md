@@ -96,7 +96,7 @@ CSS sizing could use Bootstrap, Foundation, etc. but here we will do it manually
 }
 ````
 ## Custom Layout Logic
-Internally Mason uses a `MasonPacker' to determine the best column for each brick. Internally, this is done
+Internally Mason uses a `MasonPacker` to determine the best column for each brick. Internally, this is done
 using the `MasonDefaultPacker`. However, you may want to determine the best column in your own way. You can
 provide your own implementation of `MasonPacker` vias the `MasonOptions.packer` property. As an example,
 there is a `MasonSimplePacker` included in this package that will just choose the next column sequentially.

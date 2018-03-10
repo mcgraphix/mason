@@ -1,9 +1,10 @@
 /**
  * Created by mckeowr on 2/2/17.
  */
-import {Mason, MasonDomRenderer} from '../lib';
+import {Mason, MasonDomRenderer, MasonSimplePacker, MasonDefaultPacker} from '../lib';
 import {ResizeSensor} from 'css-element-queries';
 
+var useSimplePacker = false;
 function pack() {
 
         // find our container
@@ -29,10 +30,10 @@ function pack() {
             // see the difference in position of bricks 5 and 6 after the
             // show more button is clicked in brick 1
             threshold: 40,
-            columns: 12
+            columns: 12,
             // implement your own packing logic
             // form example, import MasonSimplePacker and try that
-            // packer: new MasonSimplePacker()
+            packer: useSimplePacker ? new MasonSimplePacker() : new MasonDefaultPacker()
         };
 
         var containerHeight = new Mason(opts).layout(items);
@@ -56,6 +57,8 @@ function start() {
     document.getElementById('expandableExample').querySelector('button').addEventListener('click', function() {
        showMore();
     });
+
+    document.getElementById('useSimple').addEventListener('change', togglePacker);
 }
 
 function resetHeight() {
@@ -79,6 +82,11 @@ function showMore() {
         firstTile.style.height = targetHeight;
         firstTile.addEventListener('transitionend', resetHeight);
     }
+}
+
+function togglePacker(evt) {
+    useSimplePacker = evt.target.checked;
+    pack();  
 }
 
 start();

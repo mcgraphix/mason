@@ -8,7 +8,7 @@ export class MasonOptions {
   containerWidth: number;
   columns: number = 12;
   threshold: number = 0;
-  packer: MasonPacker;
+  packer?: MasonPacker;
 }
 
 export class Mason {
@@ -16,7 +16,7 @@ export class Mason {
   columnBottoms: number[];
   columns = 12;
   renderer: MasonRenderer;
-  packer?: MasonPacker;
+  packer: MasonPacker;
 
   // This is the wiggle room Mason has when choosing a column for a brick
   // When starting on the left, Mason will only consider a column choose as a better fit

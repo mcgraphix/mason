@@ -6,14 +6,14 @@ export declare class MasonOptions {
     containerWidth: number;
     columns: number;
     threshold: number;
-    packer: MasonPacker;
+    packer?: MasonPacker;
 }
 export declare class Mason {
     containerWidth: number;
     columnBottoms: number[];
     columns: number;
     renderer: MasonRenderer;
-    packer?: MasonPacker;
+    packer: MasonPacker;
     threshold: number;
     constructor(opts: MasonOptions);
     private findBestColumn(requiredColumns, element, elementIndex);

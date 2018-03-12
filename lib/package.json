@@ -1,6 +1,6 @@
 {
   "name": "mason-js",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A simple horizontal masonry layout that works with dynamically sized items",
   "main": "index.js",
   "scripts": {

@@ -1,4 +1,5 @@
-import { MasonPacker, MasonCoord } from "./mason";
+import { MasonCoord } from './mason-coord';
+import { MasonPacker } from './mason-packer';
 
 /**
  * Simple packer that positions each brick in the next column. This will

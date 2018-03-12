@@ -1,4 +1,4 @@
-import { MasonPacker } from "./mason";
+import { MasonPacker } from './mason-packer';
 /**
  * Simple packer that positions each brick in the next column. This will
  * fail spectacularly with columns of different widths.

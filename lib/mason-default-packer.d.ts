@@ -1,4 +1,4 @@
-import { MasonPacker } from "./mason";
+import { MasonPacker } from "./mason-packer";
 /**
  * Default packer used to position each brick as close to the top as possible
  */

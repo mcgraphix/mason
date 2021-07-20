@@ -8,19 +8,19 @@ var useSimplePacker = false;
 function pack() {
 
         // find our container
-        var dashboard = document.querySelector('.mason-container');
-        var containerWidth = dashboard.offsetWidth;
+        const dashboard = document.querySelector('.mason-container');
+        const containerWidth = dashboard.offsetWidth;
         // find all the bricks in it
         // not all browsers are able to treat the results from querySelectorAll with array methods like forEach()
         // so this will make then an array
-        var items = [].slice.call(dashboard.querySelectorAll('div.mason-brick'));
+        const items = [].slice.call(dashboard.querySelectorAll('div.mason-brick'));
 
         // create a Mason and use it to fit the bricks into a container
         // the size of the 'dashboard'
         // since we are dealing with dom nodes, we need the MasonDomRenderer
-        var renderer = new MasonDomRenderer();
+        const renderer = new MasonDomRenderer();
 
-        var opts = { // MasonOptions object here
+        const opts = { // MasonOptions object here
             containerWidth: containerWidth,
             renderer: renderer,
             // this threshold signifies that even if a column to the right
@@ -36,7 +36,7 @@ function pack() {
             packer: useSimplePacker ? new MasonSimplePacker() : new MasonDefaultPacker()
         };
 
-        var containerHeight = new Mason(opts).layout(items);
+        const containerHeight = new Mason(opts).layout(items);
         dashboard.style.minHeight = containerHeight + 'px';
 
 }
@@ -68,17 +68,17 @@ function resetHeight() {
 }
 
 function showMore() {
-    var firstTile = document.getElementById('expandableExample');
+  const firstTile = document.getElementById('expandableExample');
 
     if (firstTile.style.height !== '400px') {
-        var autoHeight = window.getComputedStyle(firstTile, null).height;
+      const autoHeight = window.getComputedStyle(firstTile, null).height;
         firstTile.setAttribute('data-auto-height', autoHeight);
         firstTile.style.height = autoHeight;
         setTimeout(function() {
             firstTile.style.height = '400px';
         });
     } else {
-        var targetHeight = firstTile.getAttribute('data-auto-height');
+      const targetHeight = firstTile.getAttribute('data-auto-height');
         firstTile.style.height = targetHeight;
         firstTile.addEventListener('transitionend', resetHeight);
     }
@@ -86,7 +86,7 @@ function showMore() {
 
 function togglePacker(evt) {
     useSimplePacker = evt.target.checked;
-    pack();  
+    pack();
 }
 
 start();

@@ -1,6 +1,6 @@
 {
   "name": "mason-js",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A simple horizontal masonry layout that works with dynamically sized items",
   "main": "cjs/index.js",
   "module": "index.js",
@@ -22,10 +22,10 @@
   },
   "homepage": "https://github.com/mcgraphix/mason#readme",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
     "typescript": "^4.3.5",
     "webpack": "^5.45.1",
-    "webpack-cli": "^4.7.2"
+    "webpack-cli": "^4.7.2",
+    "glob-parent": ">=5.1.2"
   },
   "optionalDependencies": {
     "css-element-queries": "^1.2.3"

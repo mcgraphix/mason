@@ -18,7 +18,7 @@ export class MasonDomRenderer implements MasonRenderer {
     }
 
     setPosition(element: HTMLElement, leftInCols: number, topInUnits: number) {
-        element.style.left =((leftInCols / this.columns) * 100) + '%';
+        element.style.insetInlineStart =((leftInCols / this.columns) * 100) + '%';
         element.style.top = topInUnits + 'px';
     }
 }

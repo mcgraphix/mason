@@ -2,6 +2,10 @@
 # mason-js
 A simple horizontal masonry layout that works with dynamically sized items
 
+***
+BREAKING CHANGE:
+The MasonDomRender now uses `inset-inline-start` instead of `left` when positioning elements in order to support RTL. If you were applying transitions to animate the position of bricks, you will need to update your CSS.
+***
 ## Install
 
 ```
@@ -96,13 +100,7 @@ CSS sizing could use Bootstrap, Foundation, etc. but here we will do it manually
 }
 ````
 ## Custom Layout Logic
-Internally Mason uses a `MasonPacker` to determine the best column for each brick. Internally, this is done
-using the `MasonDefaultPacker`. However, you may want to determine the best column in your own way. You can
-provide your own implementation of `MasonPacker` vias the `MasonOptions.packer` property. As an example,
-there is a `MasonSimplePacker` included in this package that will just choose the next column sequentially.
-One difference is that when a brick increases in height, it will just push the items below it in its column
-will just get pushed down, intead of reshuffling everything around. This packer requires that each brick be 
-the same width for it to work though.
+Mason uses a `MasonPacker` to determine the best column for each brick. Internally, this is done using the `MasonDefaultPacker`. However, you may want to determine the best column in your own way. You can provide your own implementation of `MasonPacker` vias the `MasonOptions.packer` property. As an example,there is a `MasonSimplePacker` included in this package that will just choose the next column sequentially. One difference is that when a brick increases in height, it will just push the items below it down, intead of reshuffling everything around. This packer requires that each brick be the same width for it to work though.
 
 ## Demo
 Check out [the working demo](http://mcgraphix.github.io/mason/demo/index.html)
